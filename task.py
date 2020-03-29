@@ -11,6 +11,7 @@ class Task:
         priority (int): a value in [0, 1, 2, 3, 4].
         hours (float): will be rounded to the nearest 0.5
     '''
+    
     def __init__(self, name, begin=None, end=None, priority=0, hours=1.0):
         self.flexible = True
         self.name = name
