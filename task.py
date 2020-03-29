@@ -1,7 +1,8 @@
 from datetime import datetime, timedelta
 
+
 class Task:
-    def __init__(self, name, begin = None, end = None, priority = 0, hours = 1):
+    def __init__(self, name, begin=None, end=None, priority=0, hours=1):
         self.flexible = True
         self.name = name
         self.begin = None
@@ -16,13 +17,13 @@ class Task:
             self.flexible = False
 
             self.priority = 4
-        
+
             if end is not None:
                 if not isinstance(end, datetime):
                     end = datetime.strptime(end, '%m/%d/%y %H:%M:%S')
                 self.end = end
                 delta = self.end - self.begin
-                self.hours = delta.days * 24 + delta.seconds/3600
+                self.hours = delta.days * 24 + delta.seconds / 3600
             else:
                 self.end = begin + timedelta(hours=hours)
 
@@ -32,7 +33,9 @@ class Task:
             self.hours = hours
 
     def __str__(self):
-        return f"name: {self.name}\nflexible: {self.flexible}\nbegin: {self.begin}\nend: {self.end}\nhours: {self.hours} hours"
+        return f"name: {self.name}\nflexible: {self.flexible}\n" \
+            f"begin: {self.begin}\nend: {self.end}\nhours: {self.hours} hours"
+
 
 if __name__ == '__main__':
     task1 = Task("Be sexy", begin=datetime.now())
