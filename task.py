@@ -21,8 +21,8 @@ class Task:
                 if not isinstance(end, datetime):
                     end = datetime.strptime(end, '%m/%d/%y %H:%M:%S')
                 self.end = end
-                
-                self.hours = self.end.hour - self.begin.hour
+                delta = self.end - self.begin
+                self.hours = delta.days * 24 + delta.seconds/3600
             else:
                 self.end = begin + timedelta(hours=hours)
 
