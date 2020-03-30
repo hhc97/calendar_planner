@@ -40,7 +40,7 @@ class TaskBuilder:
         priority = input('Enter task priority: ')
         try:
             priority = int(priority)
-            if priority < 0 or priority > 5:
+            if priority < 0 or priority > 4:
                 self.get_and_set_priority()
             else:
                 self.priority = priority
