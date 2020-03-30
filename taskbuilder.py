@@ -56,11 +56,11 @@ class TaskBuilder:
     """
 
     def __init__(self):
-        self.name = None
-        self.begin = None
-        self.end = None
-        self.hours = None
-        self.priority = None
+        self._name = None
+        self._begin = None
+        self._end = None
+        self._hours = None
+        self._priority = None
 
     def get_data_from_input(self):
         self._get_and_set_name()
@@ -70,7 +70,7 @@ class TaskBuilder:
     # methods to get and set attributes
     def _get_and_set_name(self):
         name = input('Enter name for this task: ')
-        self.name = name.capitalize()
+        self._name = name.capitalize()
 
     def _get_and_set_start_time(self):
         pass
@@ -81,7 +81,7 @@ class TaskBuilder:
     def _get_and_set_hours(self):
         hours = input('Enter number of hours this task needs: ')
         try:
-            self.hours = float(hours)
+            self._hours = float(hours)
         except ValueError:
             self._get_and_set_hours()
 
@@ -92,7 +92,7 @@ class TaskBuilder:
             if priority < 0 or priority > 4:
                 self._get_and_set_priority()
             else:
-                self.priority = priority
+                self._priority = priority
         except ValueError:
             self._get_and_set_priority()
 
@@ -100,7 +100,7 @@ class TaskBuilder:
     # as of now there is no error checking, if you call this method
     # it is assumed that the input is valid
     def set_name(self, name: str):
-        self.name = name
+        self._name = name
         return self
 
     def set_begin(self):
@@ -110,17 +110,17 @@ class TaskBuilder:
         pass
 
     def set_hours(self, hours: float):
-        self.hours = hours
+        self._hours = hours
         return self
 
     def set_priority(self, priority: int):
-        self.priority = priority
+        self._priority = priority
         return self
 
     def build(self):
         """Builds the current configuration of Task and returns it"""
-        if self.name and self.hours:
-            ret = Task(self.name, self.begin, self.end, self.priority, self.hours)
+        if self._name and self._hours:
+            ret = Task(self._name, self._begin, self._end, self._priority, self._hours)
             self.reset()  # resets the current configuration
             return ret
         else:
