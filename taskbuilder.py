@@ -7,7 +7,6 @@ class TaskBuilder:
     """
 
     def __init__(self):
-        self.flexible = True
         self.name = None
         self.begin = None
         self.end = None
@@ -51,9 +50,6 @@ class TaskBuilder:
     # methods to set attributes, these may be chained together
     # as of now there is no error checking, if you call this method
     # it is assumed that the input is valid
-    def set_flexibility(self, flexibility: bool):
-        self.flexible = flexibility
-        return self
 
     def set_name(self, name: str):
         self.name = name
@@ -89,6 +85,6 @@ if __name__ == '__main__':
     # builder.get_data_from_input()
     # task = builder.build()
     # print(task)
-    builder.set_flexibility(False).set_priority(0).set_hours(3.5).set_name('testTask')
+    builder.set_priority(0).set_hours(3.5).set_name('testTask')
     task2 = builder.build()
     print(task2)
